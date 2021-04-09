@@ -23,7 +23,7 @@ class BackgroundLocation {
     });
   }
 
-  static setAndroidNotification({String title, String message, String icon}) async {
+  static setAndroidNotification({String? title, String? message, String? icon}) async {
     if (Platform.isAndroid) {
       return await _channel.invokeMethod("set_android_notification", <String, dynamic>{
         "title": title,
@@ -66,7 +66,7 @@ class BackgroundLocation {
   }
 
   /// Ask the user for location permissions
-  static getPermissions({Function onGranted, Function onDenied}) async {
+  static getPermissions({Function? onGranted, Function? onDenied}) async {
     await Permission.locationWhenInUse.request();
     if (await Permission.locationWhenInUse.isGranted) {
       if (onGranted != null) {
@@ -125,14 +125,14 @@ class Location {
       this.time,
       this.isMock});
 
-  double latitude;
-  double longitude;
-  double altitude;
-  double bearing;
-  double accuracy;
-  double speed;
-  double time;
-  bool isMock;
+  double? latitude;
+  double? longitude;
+  double? altitude;
+  double? bearing;
+  double? accuracy;
+  double? speed;
+  double? time;
+  bool? isMock;
   
   toMap() {
     var obj = {
